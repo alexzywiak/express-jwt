@@ -4,12 +4,14 @@ const bodyParser  = require('body-parser');
 const morgan      = require('morgan');
 const mongoose    = require('mongoose');
 const app         = express();
+const cors        = require('cors');
 
 const router      = require('./router');
 
 mongoose.connect('mongodb://localhost:react-auth/react-auth');
 
 app.use(morgan('combined'));
+app.use(cors());
 app.use(bodyParser.json({type: '*/*'}));
 router(app);
 
